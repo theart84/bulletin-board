@@ -16,7 +16,6 @@ export default class BulletinBoard {
   init() {
     this.bindToDOM();
     this.registerEvents();
-    this.subscribeOnEvents();
     this.initState();
   }
 
@@ -28,8 +27,6 @@ export default class BulletinBoard {
     const showMoreButton = this.container.querySelector('.board__link-show-more');
     showMoreButton.addEventListener('click', () => this.onShowMoreHandler());
   }
-
-  subscribeOnEvents() {}
 
   onShowMoreHandler() {
     this.renderBulletin();

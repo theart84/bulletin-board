@@ -2,25 +2,26 @@
   .board {
     width: 1280px;
     padding: 25px 156px;
+    &__header {
+      margin-left: 32px;
+      text-align: initial;
+    }
   }
-  .board__header {
-    margin-left: 32px;
-    text-align: initial;
-  }
+
   .bulletin {
     position: relative;
     flex: 0 0 224px;
     margin-right: 24px;
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
   }
-  .bulletin:nth-child(4n) {
-    margin-right: 0;
-  }
+
   .slider__dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     margin-right: 8px;
-    cursor: pointer;
+    cursor: pointer
   }
 }
-/*# sourceMappingURL=media1281.css.map */

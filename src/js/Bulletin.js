@@ -19,7 +19,7 @@ export default class Bulletin {
       .slice(0, 5)}`;
 
     return templateEngine.generate({
-      type: 'div',
+      type: 'article',
       attr: {
         class: ['bulletin'],
         'data-id': this.id,
@@ -28,7 +28,7 @@ export default class Bulletin {
         {
           type: 'div',
           attr: {
-            class: ['bulletin__slider', `${this.seen ? 'seen' : ''}`],
+            class: ['slider', `${this.seen ? 'seen' : ''}`],
           },
           content: [
             {
@@ -239,6 +239,16 @@ export default class Bulletin {
               attr: {
                 class: ['bulletin__compare'],
               },
+              listener: [
+                {
+                  type: 'mouseenter',
+                  cb: (event) => this.onCompareHandler(event),
+                },
+                {
+                  type: 'mouseleave',
+                  cb: (event) => this.onCompareHandler(event),
+                },
+              ],
               content: '',
             },
             {
@@ -257,10 +267,16 @@ export default class Bulletin {
               attr: {
                 class: ['bulletin__delivery', `${this.seen ? 'bulletin__delivery-success' : ''}`],
               },
-              listener: {
-                type: 'click',
-                cb: (event) => this.onClickDelivery(event),
-              },
+              listener: [
+                {
+                  type: 'mouseenter',
+                  cb: (event) => this.onDeliveryHandler(event),
+                },
+                {
+                  type: 'mouseleave',
+                  cb: (event) => this.onDeliveryHandler(event),
+                },
+              ],
               content: '',
             },
             {
@@ -268,10 +284,16 @@ export default class Bulletin {
               attr: {
                 class: ['bulletin__deal', `${this.seen ? 'bulletin__deal-success' : ''}`],
               },
-              listener: {
-                type: 'click',
-                cb: (event) => this.onClickDeal(event),
-              },
+              listener: [
+                {
+                  type: 'mouseenter',
+                  cb: (event) => this.onDealHandler(event),
+                },
+                {
+                  type: 'mouseleave',
+                  cb: (event) => this.onDealHandler(event),
+                },
+              ],
               content: '',
             },
           ],
@@ -287,17 +309,22 @@ export default class Bulletin {
     });
   }
 
+  onCompareHandler(event) {
+    const compareElement = event.target;
+    compareElement.classList.toggle('bulletin__compare-success');
+  }
+
   onClickLike(event) {
     const likeElement = event.target;
     likeElement.classList.toggle('bulletin__like-success');
   }
 
-  onClickDelivery(event) {
+  onDeliveryHandler(event) {
     const likeElement = event.target;
     likeElement.classList.toggle('bulletin__delivery-success');
   }
 
-  onClickDeal(event) {
+  onDealHandler(event) {
     const likeElement = event.target;
     likeElement.classList.toggle('bulletin__deal-success');
   }
@@ -327,7 +354,7 @@ export default class Bulletin {
   }
 
   onMouseEnter() {
-    let counter = 0;
+    let counter = 1;
     this.timerID = setInterval(() => {
       if (counter > 3) {
         counter = 0;

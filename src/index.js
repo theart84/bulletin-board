@@ -1,6 +1,6 @@
-import './css/style.css';
-import './css/media641-960.css';
-import './css/media961-1280.css';
-import './css/media1281.css';
+import './css/style.less';
+import './css/media641-960.less';
+import './css/media961-1280.less';
+import './css/media1281.less';
 
 import './js/app';
