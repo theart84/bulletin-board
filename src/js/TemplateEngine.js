@@ -18,7 +18,7 @@ class TemplateEngine {
     }
     if (data.listener) {
       if (Array.isArray(data.listener)) {
-        data.listener.forEach((listener) => template.addEventListener(listener.type, listener.cb))
+        data.listener.forEach((listener) => template.addEventListener(listener.type, listener.cb));
       } else {
         template.addEventListener(data.listener.type, data.listener.cb);
       }

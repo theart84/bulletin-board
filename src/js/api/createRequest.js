@@ -1,7 +1,7 @@
 export const createRequest = async () => {
   const URL = 'https://6075786f0baf7c0017fa64ce.mockapi.io/products';
   const request = await fetch(URL);
-  return await request.json();
+  return request.json();
 };
 
 const createRequestIMG = async () => {
@@ -9,9 +9,8 @@ const createRequestIMG = async () => {
     'https://api.unsplash.com/photos?client_id=R90ZpgVQc2yOCzzDh9E1yELEPKUIxkXe9W8rXCHp4NE&page=1&per_page=30';
   const request = await fetch(URL);
   const response = await request.json();
-  const result = response.map((image) => image.urls.regular);
-  return await result;
+  return response.map((image) => image.urls.regular);
 };
 
-export let imgURL;
-createRequestIMG().then((imgArray) => (imgURL = imgArray));
+export const imgURL = [];
+createRequestIMG().then((imgArray) => imgURL.push(...imgArray));
