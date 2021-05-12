@@ -1,0 +1,38 @@
+@media (min-width: 1281px) {
+  .board {
+    width: 1280px;
+    padding: 25px 156px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .board__header {
+    margin-left: 32px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 25px;
+    color: #2C2C2C;
+  }
+
+  .board__content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .bulletin {
+    position: relative;
+    flex: 0 0 224px;
+    margin-bottom: 24px;
+    margin-right: 24px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .bulletin:nth-child(4n) {
+    margin-right: 0;
+  }
+}

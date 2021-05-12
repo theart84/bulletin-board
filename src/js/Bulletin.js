@@ -28,19 +28,154 @@ export default class Bulletin {
         {
           type: 'div',
           attr: {
-            class: ['bulletin__image', `${this.seen ? 'seen' : ''}`],
+            class: ['bulletin__slider', `${this.seen ? 'seen' : ''}`],
           },
-          content: {
-            type: 'img',
-            attr: {
-              class: [''],
-              src:
-                imgURL[Math.floor(Math.random() * imgURL.length)] ||
-                'https://source.unsplash.com/random',
-              alt: 'bulletin_picture',
+          content: [
+            {
+              type: 'div',
+              attr: {
+                class: ['slider__items'],
+              },
+              listener: [
+                {
+                  type: 'mouseenter',
+                  cb: () => this.onMouseEnter(),
+                },
+                {
+                  type: 'mouseleave',
+                  cb: () => this.onMouseLeave(),
+                },
+              ],
+              content: [
+                {
+                  type: 'div',
+                  attr: {
+                    class: ['slider__item', 'slider__item-active'],
+                  },
+                  content: {
+                    type: 'img',
+                    attr: {
+                      class: ['slider__image'],
+                      src:
+                        imgURL[Math.floor(Math.random() * imgURL.length)] ||
+                        'https://source.unsplash.com/random',
+                      alt: 'bulletin_picture',
+                    },
+                    content: '',
+                  },
+                },
+                {
+                  type: 'div',
+                  attr: {
+                    class: ['slider__item'],
+                  },
+                  content: {
+                    type: 'img',
+                    attr: {
+                      class: ['slider__image'],
+                      src:
+                        imgURL[Math.floor(Math.random() * imgURL.length)] ||
+                        'https://source.unsplash.com/random',
+                      alt: 'bulletin_picture',
+                    },
+                    content: '',
+                  },
+                },
+                {
+                  type: 'div',
+                  attr: {
+                    class: ['slider__item'],
+                  },
+                  content: {
+                    type: 'img',
+                    attr: {
+                      class: ['slider__image'],
+                      src:
+                        imgURL[Math.floor(Math.random() * imgURL.length)] ||
+                        'https://source.unsplash.com/random',
+                      alt: 'bulletin_picture',
+                    },
+                    content: '',
+                  },
+                },
+                {
+                  type: 'div',
+                  attr: {
+                    class: ['slider__item'],
+                  },
+                  content: {
+                    type: 'img',
+                    attr: {
+                      class: ['slider__image'],
+                      src:
+                        imgURL[Math.floor(Math.random() * imgURL.length)] ||
+                        'https://source.unsplash.com/random',
+                      alt: 'bulletin_picture',
+                    },
+                    content: '',
+                  },
+                },
+              ],
             },
-            content: '',
-          },
+            {
+              type: 'div',
+              attr: {
+                class: ['slider__navigation'],
+              },
+              content: {
+                type: 'div',
+                attr: {
+                  class: ['slider__dots'],
+                },
+                content: [
+                  {
+                    type: 'div',
+                    attr: {
+                      class: ['slider__dot', 'slider__dot-active'],
+                    },
+                    listener: {
+                      type: 'click',
+                      cb: (event) => this.onClickDot(event),
+                    },
+                    content: '',
+                  },
+                  {
+                    type: 'div',
+                    attr: {
+                      class: ['slider__dot'],
+                    },
+                    listener: {
+                      type: 'click',
+                      cb: (event) => this.onClickDot(event),
+                    },
+                    content: '',
+                  },
+                  {
+                    type: 'div',
+                    attr: {
+                      class: ['slider__dot'],
+                    },
+                    listener: {
+                      type: 'click',
+                      cb: (event) => this.onClickDot(event),
+                    },
+                    content: '',
+                  },
+                  {
+                    type: 'div',
+                    attr: {
+                      class: ['slider__dot'],
+                    },
+                    listener: {
+                      type: 'click',
+                      cb: (event) => this.onClickDot(event),
+                    },
+                    content: '',
+                  },
+                ],
+              },
+            },
+          ],
         },
         {
           type: 'div',
@@ -165,5 +300,45 @@ export default class Bulletin {
   onClickDeal(event) {
     const likeElement = event.target;
     likeElement.classList.toggle('bulletin__deal-success');
+  }
+
+  get bulletinContainer() {
+    return document.querySelector(`.bulletin[data-id="${this.id}"]`);
+  }
+
+  get arraySliderItems() {
+    return [...this.bulletinContainer.querySelectorAll('.slider__item')];
+  }
+
+  get arrayDotItems() {
+    return [...this.bulletinContainer.querySelectorAll('.slider__dot')];
+  }
+
+  onClickDot(event) {
+    const idx = this.arrayDotItems.findIndex((item) => item === event.target);
+    this.changeSlide(idx);
+  }
+
+  changeSlide(count) {
+    this.arraySliderItems.forEach((el) => el.classList.remove('slider__item-active'));
+    this.arraySliderItems[count].classList.add('slider__item-active');
+    this.arrayDotItems.forEach((el) => el.classList.remove('slider__dot-active'));
+    this.arrayDotItems[count].classList.add('slider__dot-active');
+  }
+
+  onMouseEnter() {
+    let counter = 0;
+    this.timerID = setInterval(() => {
+      if (counter > 3) {
+        counter = 0;
+      }
+      this.changeSlide(counter);
+      counter += 1;
+    }, 2000);
+  }
+
+  onMouseLeave() {
+    clearInterval(this.timerID);
+    this.timerID = null;
   }
 }

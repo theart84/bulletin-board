@@ -1,0 +1,27 @@
+@media (min-width: 641px) and (max-width: 960px) {
+  .board {
+    width: 100%;
+    padding: 25px 25px;
+  }
+
+  .board__header {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .board__content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .bulletin {
+    flex: 0 0 48%;
+    margin-right: 4%;
+    margin-bottom: 24px;
+  }
+
+  .bulletin:nth-child(2n) {
+    margin-right: 0;
+  }
+}
