@@ -20,7 +20,6 @@ body {
 }
 
 .board__header {
-  margin-left: 0;
   text-align: center;
   margin-bottom: 8px;
   font-weight: 700;
@@ -74,7 +73,6 @@ body {
 .bulletin {
   position: relative;
   flex: 0 0 100%;
-  margin-right: 0;
   margin-bottom: 24px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -106,7 +104,7 @@ body {
 
 .slider__dots {
   position: absolute;
-  bottom: 4px;
+  bottom: 6px;
   left: 50px;
   right: 50px;
   display: flex;
@@ -115,13 +113,17 @@ body {
 }
 
 .slider__dot {
-  width: 8px;
-  height: 8px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   border: 1px solid #5a5a5a;
   background: #c4c4c4;
-  margin-right: 8px;
+  margin-right: 25px;
   cursor: pointer
+}
+
+.slider__dot:last-child {
+  margin-right: 0;
 }
 
 .slider__dot-active {

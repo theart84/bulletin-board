@@ -4,21 +4,9 @@
     padding: 25px 25px;
   }
 
-  .board__header {
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .board__content {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
   .bulletin {
     flex: 0 0 32%;
     margin-right: 2%;
-    margin-bottom: 24px;
   }
 
   .bulletin:nth-child(3n) {
