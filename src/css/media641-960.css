@@ -3,9 +3,14 @@
     width: 100%;
     padding: 25px 25px;
   }
+  .board__content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 472px;
+  }
   .bulletin {
-    flex: 0 0 48%;
-    margin-right: 4%;
+    flex: 0 0 224px;
+    margin-right: 24px;
   }
   .bulletin:nth-child(2n) {
     margin-right: 0;

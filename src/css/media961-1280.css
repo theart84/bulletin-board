@@ -3,6 +3,11 @@
     width: 100%;
     padding: 25px 25px;
   }
+  .board__content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 720px;
+  }
   .bulletin {
     flex: 0 0 32%;
     margin-right: 2%;

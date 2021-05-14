@@ -7,6 +7,11 @@
     margin-left: 32px;
     text-align: initial;
   }
+  .board__content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 968px;
+  }
   .bulletin {
     position: relative;
     flex: 0 0 224px;

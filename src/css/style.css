@@ -24,9 +24,9 @@ body {
   color: #2C2C2C;
 }
 .board__content {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+  width: 224px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .board__footer {
   font-weight: 500;
@@ -93,8 +93,8 @@ body {
   align-items: center;
 }
 .slider__dot {
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   border: 1px solid #5a5a5a;
   background: #c4c4c4;
@@ -110,7 +110,7 @@ body {
 }
 .bulletin {
   position: relative;
-  flex: 0 0 100%;
+  flex: 0 0 224px;
   margin-bottom: 24px;
   box-sizing: border-box;
   border-radius: 8px;
